@@ -17,7 +17,7 @@ module Truemail
         establish_smtp_connection
         return true if success(success_response?)
         result.smtp_debug = smtp_results
-        return true if success(not_includes_user_not_found_errors?)
+        return true if success(no_user_not_found_errors?)
         add_error(Truemail::Validate::Smtp::ERROR)
         false
       end
@@ -61,7 +61,7 @@ module Truemail
         smtp_results.map(&:response).any?(&:rcptto)
       end
 
-      def not_includes_user_not_found_errors?
+      def no_user_not_found_errors?
         return false unless configuration.smtp_safe_check
         result.smtp_debug.map { |request| request.response.errors }.all? do |errors|
           next true unless errors.key?(:rcptto)

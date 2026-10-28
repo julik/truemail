@@ -8,7 +8,7 @@ module Truemail
 
       def run
         return add_warning(Truemail::Audit::Ptr::PTR_NOT_FOUND) if ptr_records.empty?
-        return if ptr_refer_to_verifier_domain?
+        return if ptr_refers_to_verifier_domain?
         add_warning(Truemail::Audit::Ptr::PTR_NOT_REFER)
       end
 
@@ -27,7 +27,7 @@ module Truemail
         end || []
       end
 
-      def ptr_refer_to_verifier_domain?
+      def ptr_refers_to_verifier_domain?
         ptr_records.include?(verifier_domain)
       end
     end
