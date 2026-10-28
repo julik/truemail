@@ -761,7 +761,7 @@ Truemail.validate('email@example.com', with: :mx)
 
 ##### Non-RFC MX lookup flow
 
-Truemail can also use a non-RFC MX lookup flow. It means that only the MX resolver will be used on the DNS validation layer. This option is disabled by default.
+Truemail can also use a non-RFC MX lookup flow. It runs the MX resolver only, skipping the CNAME and A record fallbacks that RFC 5321 prescribes, so a domain without MX records is treated as having no mail servers. This option is disabled by default.
 
 Example of usage:
 

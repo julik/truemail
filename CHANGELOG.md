@@ -881,7 +881,7 @@ Truemail.validate('nonexistent_email@bestweb.com.ua').as_json
 
 ### Added
 
-- Ability to use a non-RFC MX lookup flow (only MX and Null MX records will be checked on the DNS validation layer)
+- Ability to use a non-RFC MX lookup flow (only MX and Null MX records are checked on the DNS validation layer, skipping the CNAME and A record fallbacks)
 
 ```ruby
 Truemail.configure do |config|
